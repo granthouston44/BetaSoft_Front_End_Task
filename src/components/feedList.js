@@ -8,7 +8,7 @@ if(!props.data) return <h2>Loading data...</h2>;
 const postNodes = props.data.map((post, index) => {
 return(
   <ul>
-    <Post key={index} post={post}/>
+    <Post post={post} key={index}>{post.title}</Post>
   </ul>
 )
 })
