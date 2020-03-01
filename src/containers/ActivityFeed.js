@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import FeedList from '../components/FeedList'
+import Pagination from '../components/Pagination'
 
 class ActivityFeed extends Component{
   constructor(props){
@@ -7,7 +8,7 @@ class ActivityFeed extends Component{
     this.state = {
       feedData: [],
       currentPage: 1,
-      postsPerPage: 50
+      postsPerPage: 10
     }
   }
 
@@ -33,6 +34,7 @@ class ActivityFeed extends Component{
     return(
       <div>
       <FeedList data={currentPosts}/>
+      <Pagination postsPerPage={this.state.postsPerPage} totalPosts={this.state.feedData.length}/>
       </div>
     )
   }
