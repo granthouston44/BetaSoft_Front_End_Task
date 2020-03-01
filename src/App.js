@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import './containers/ActivityFeed'
+import ActivityFeed from './containers/ActivityFeed'
 
 function App() {
   return (
