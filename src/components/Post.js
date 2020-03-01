@@ -3,7 +3,9 @@ import React, {Component} from 'react'
 const Post = (props) => {
 
 return(
-  <p>{props.children}</p>
+  <li>
+  <h4>{props.children}</h4>
+  </li>
 )
 
 
