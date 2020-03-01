@@ -8,8 +8,9 @@ class ActivityFeed extends Component{
     this.state = {
       feedData: [],
       currentPage: 1,
-      postsPerPage: 10
+      postsPerPage: 50
     }
+    this.paginate = this.paginate.bind(this)
   }
 
 
@@ -23,18 +24,23 @@ class ActivityFeed extends Component{
   }
 
 
-
+paginate(pageNumber){
+  //set currentPageNumber
+    this.setState({currentPage: pageNumber})
+}
 
 
   render(){
     const indexOfLastPost = this.state.currentPage * this.state.postsPerPage
-    const indexOfFirstPost = this.state.indexOfLastPost - this.state.postsPerPage
+    // console.log(indexOfLastPost);
+    const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage
+    // console.log(indexOfFirstPost);
     const currentPosts = this.state.feedData.slice(indexOfFirstPost, indexOfLastPost)
 
     return(
       <div>
       <FeedList data={currentPosts}/>
-      <Pagination postsPerPage={this.state.postsPerPage} totalPosts={this.state.feedData.length}/>
+      <Pagination paginate={this.paginate} postsPerPage={this.state.postsPerPage} totalPosts={this.state.feedData.length} />
       </div>
     )
   }
