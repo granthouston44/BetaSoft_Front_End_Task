@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Post from './Post'
 
 const FeedList = (props) => {
@@ -11,9 +11,9 @@ function handleClick(event){
     props.onPostSelected(event.target.innerText);
 }
 
-const postNodes = props.data.map((post, index) => {
+const postNodes = props.data.map((post) => {
 return(
-  <ul key={index} onClick={handleClick.bind(this)}>
+  <ul key={post.id} onClick={handleClick.bind(this)}>
     <hr/>
     <Post post={post}  >{post.title}</Post>
   </ul>

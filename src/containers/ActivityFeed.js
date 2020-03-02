@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import FeedList from '../components/FeedList'
 import Pagination from '../components/Pagination'
+import Request from '../helpers/Request'
 
 class ActivityFeed extends Component{
   constructor(props){
@@ -8,6 +9,7 @@ class ActivityFeed extends Component{
     this.state = {
       feedData: [],
       selectedPost: "",
+      commentData: [],
       currentPage: 1,
       postsPerPage: 50
     }
@@ -17,10 +19,10 @@ class ActivityFeed extends Component{
 
 
   componentDidMount(){
-    console.log('did mount');
-    const url = 'https://jsonplaceholder.typicode.com/posts'
-    fetch(url)
-    .then(res => res.json())
+
+    const postURL = 'https://jsonplaceholder.typicode.com/posts'
+    const request = new Request();
+    request.get(postURL)
     .then(data => this.setState({feedData: data}))
     .catch(err => console.error)
   }
@@ -30,16 +32,16 @@ class ActivityFeed extends Component{
     this.setState({selectedPost: postTitle})
   }
 
-paginate(pageNumber){
-  //set currentPageNumber
+  paginate(pageNumber){
+    //set currentPageNumber
     this.setState({currentPage: pageNumber})
-}
+  }
 
 
   render(){
     const selectedPost = this.state.feedData.find(post => {
-  return post.title === this.state.selectedPost;
-})
+      return post.title === this.state.selectedPost;
+    })
     const indexOfLastPost = this.state.currentPage * this.state.postsPerPage
     // console.log(indexOfLastPost);
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage
