@@ -5,6 +5,7 @@ const Comment = (props) => {
     <Fragment>
       <div className="comment-container">
         <div className="comment-body">
+          <hr/>
           <p>{props.children}</p>
         </div>
         <div className="author">

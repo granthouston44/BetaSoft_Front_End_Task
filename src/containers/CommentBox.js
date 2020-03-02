@@ -33,8 +33,7 @@ handleToggleComments(){
   render(){
       return(
         <div className="comment-box">
-          <h4>I'm the commentbox</h4>
-          <button className="btn-comment" onClick={this.fetchComments}> Comment </button>
+          <button className="btn-comment" onClick={this.fetchComments}> Comments </button>
           <CommentList commentToggle={this.state.commentBox} commentData={this.state.commentData}/>
         </div>
       )

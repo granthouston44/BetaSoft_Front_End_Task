@@ -4,7 +4,9 @@ import Comment from './Comment'
 const CommentList = (props) => {
 
   const commentNodes = props.commentData.map((comment)=> {
-    return(<Comment authorProp={comment.email} key={comment.id}>{comment.body}</Comment>)
+    return(
+      <Comment authorProp={comment.email} key={comment.id}>{comment.body}</Comment>
+    )
   })
 
   if(!props.commentToggle){
