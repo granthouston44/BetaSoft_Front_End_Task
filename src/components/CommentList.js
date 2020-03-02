@@ -7,7 +7,12 @@ const CommentList = (props) => {
     return(<Comment authorProp={comment.email} key={comment.id}>{comment.body}</Comment>)
   })
 
+  if(!props.commentToggle){
+    return null
+  }
+
   return (
+
     <div className="comment-list">
       {commentNodes}
     </div>
