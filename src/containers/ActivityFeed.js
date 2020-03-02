@@ -7,10 +7,12 @@ class ActivityFeed extends Component{
     super(props)
     this.state = {
       feedData: [],
+      selectedPost: "",
       currentPage: 1,
       postsPerPage: 50
     }
     this.paginate = this.paginate.bind(this)
+    this.handleSelectedPost = this.handleSelectedPost.bind(this)
   }
 
 
@@ -23,6 +25,10 @@ class ActivityFeed extends Component{
     .catch(err => console.error)
   }
 
+  handleSelectedPost(postTitle){
+    console.log('selected Post');
+    this.setState({selectedPost: postTitle})
+  }
 
 paginate(pageNumber){
   //set currentPageNumber
@@ -31,6 +37,9 @@ paginate(pageNumber){
 
 
   render(){
+    const selectedPost = this.state.feedData.find(post => {
+  return post.title === this.state.selectedPost;
+})
     const indexOfLastPost = this.state.currentPage * this.state.postsPerPage
     // console.log(indexOfLastPost);
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage
@@ -39,7 +48,7 @@ paginate(pageNumber){
 
     return(
       <div>
-      <FeedList data={currentPosts}/>
+      <FeedList selectedPost={selectedPost} onPostSelected={this.handleSelectedPost} data={currentPosts}/>
       <Pagination paginate={this.paginate} postsPerPage={this.state.postsPerPage} totalPosts={this.state.feedData.length} />
       </div>
     )

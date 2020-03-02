@@ -5,11 +5,17 @@ const FeedList = (props) => {
 
 if(!props.data) return <h2>Loading data...</h2>;
 
+function handleClick(event){
+  console.log('handle click');
+    console.log(event.target);
+    props.onPostSelected(event.target.innerText);
+}
+
 const postNodes = props.data.map((post, index) => {
 return(
-  <ul>
+  <ul key={index} onClick={handleClick.bind(this)}>
     <hr/>
-    <Post post={post} key={index}>{post.title}</Post>
+    <Post post={post}  >{post.title}</Post>
   </ul>
 )
 })
