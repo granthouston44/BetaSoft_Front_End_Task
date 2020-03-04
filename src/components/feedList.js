@@ -3,7 +3,7 @@ import Post from './Post'
 
 const FeedList = (props) => {
 
-if(!props.data) return <h2>Loading data...</h2>;
+if(!props.Data) return <div className="lds-facebook">Loading...<div></div><div></div><div></div></div>;
 
 function handleClick(event){
   console.log('handle click');
@@ -11,7 +11,7 @@ function handleClick(event){
     props.onPostSelected(event.target.innerText);
 }
 
-const postNodes = props.data.map((post) => {
+const postNodes = props.postData.map((post) => {
 return(
   <ul key={post.id} onClick={handleClick.bind(this)}>
     <hr/>

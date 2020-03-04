@@ -33,7 +33,7 @@ handleToggleComments(){
   render(){
       return(
         <div className="comment-box">
-          <button className="btn-comment" onClick={this.fetchComments}> Comments </button>
+          <button className="btn-comment" onClick={this.fetchComments}> Show/Hide Comments </button>
           <CommentList commentToggle={this.state.commentBox} commentData={this.state.commentData}/>
         </div>
       )

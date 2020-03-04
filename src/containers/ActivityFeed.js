@@ -7,11 +7,12 @@ class ActivityFeed extends Component{
   constructor(props){
     super(props)
     this.state = {
-      feedData: [],
+      postData: [],
+      userData: [],
       selectedPost: "",
       commentData: [],
       currentPage: 1,
-      postsPerPage: 50
+      postsPerPage: 5
     }
     this.paginate = this.paginate.bind(this)
     this.handleSelectedPost = this.handleSelectedPost.bind(this)
@@ -20,10 +21,24 @@ class ActivityFeed extends Component{
 
   componentDidMount(){
 
+    this.fetchPosts()
+    this.fetchUsers()
+  }
+
+  fetchUsers(){
+    const userURL = 'https://jsonplaceholder.typicode.com/users'
+    const request = new Request();
+    request.get(userURL)
+    .then(data => this.setState({userData: data}))
+    .catch(err => console.error)
+  }
+
+  fetchPosts(){
     const postURL = 'https://jsonplaceholder.typicode.com/posts'
     const request = new Request();
     request.get(postURL)
-    .then(data => this.setState({feedData: data}))
+    .then(data => data.slice(0, 50))
+    .then(data => this.setState({postData: data}))
     .catch(err => console.error)
   }
 
@@ -39,19 +54,19 @@ class ActivityFeed extends Component{
 
 
   render(){
-    const selectedPost = this.state.feedData.find(post => {
+    const selectedPost = this.state.postData.find(post => {
       return post.title === this.state.selectedPost;
     })
     const indexOfLastPost = this.state.currentPage * this.state.postsPerPage
     // console.log(indexOfLastPost);
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage
     // console.log(indexOfFirstPost);
-    const currentPosts = this.state.feedData.slice(indexOfFirstPost, indexOfLastPost)
+    const currentPosts = this.state.postData.slice(indexOfFirstPost, indexOfLastPost)
 
     return(
       <div>
-      <FeedList selectedPost={selectedPost} onPostSelected={this.handleSelectedPost} data={currentPosts}/>
-      <Pagination paginate={this.paginate} postsPerPage={this.state.postsPerPage} totalPosts={this.state.feedData.length} />
+      <FeedList selectedPost={selectedPost} onPostSelected={this.handleSelectedPost} postData={currentPosts} userData={this.state.userData}/>
+      <Pagination paginate={this.paginate} postsPerPage={this.state.postsPerPage} totalPosts={this.state.postData.length} />
       </div>
     )
   }
