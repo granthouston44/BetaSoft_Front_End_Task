@@ -14,16 +14,16 @@ const CommentList = (props) => {
   }
 
   if(!props.commentData){
-   return <div className="animation-bars">Loading...<div className="lds-facebook"><div></div><div></div><div></div></div></div>
-}
+    return <div className="animation-bars">Loading...<div className="lds-facebook"><div></div><div></div><div></div></div></div>
+  }
   else{
-  return (
+    return (
 
-    <div className="comment-list">
+      <div className="comment-list">
       {commentNodes}
-    </div>
-  )
-}
+      </div>
+    )
+  }
 }
 
 
