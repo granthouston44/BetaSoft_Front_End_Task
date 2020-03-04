@@ -49,6 +49,9 @@ Read up on react hooks and see if they can be of any use for the project
 I'd like to look into PropTypes to help improve readability and provide type safety.
 
 
+
+## React Bootstrap notes
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
