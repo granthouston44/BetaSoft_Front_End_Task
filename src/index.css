@@ -57,6 +57,7 @@ color: black;
 }
 
 .beta-banner{
+  display: flex;
   color: white;
   font-weight: bolder;
   font-size: -webkit-xxx-large;
@@ -64,6 +65,7 @@ color: black;
 }
 
 .blog-banner{
+  display:flex;
   color: #ccd3d9;
   font-weight: bolder;
   font-style: italic;
@@ -111,6 +113,6 @@ color: black;
 
 .animation-bars{
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
 }

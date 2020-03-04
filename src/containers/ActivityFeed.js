@@ -12,20 +12,24 @@ class ActivityFeed extends Component{
       selectedPost: "",
       commentData: [],
       currentPage: 1,
-      postsPerPage: 1
+      postsPerPage: 5
     }
     this.paginate = this.paginate.bind(this)
     this.handleSelectedPost = this.handleSelectedPost.bind(this)
+    this.fetchPosts = this.fetchPosts.bind(this)
+    this.fetchUsers = this.fetchUsers.bind(this)
   }
 
 
-  componentDidMount(){
-
+  componentWillMount(){
     this.fetchPosts()
     this.fetchUsers()
+
   }
 
-  fetchUsers(){
+
+
+  fetchUsers = () => {
     const userURL = 'https://jsonplaceholder.typicode.com/users'
     const request = new Request();
     request.get(userURL)
@@ -33,7 +37,7 @@ class ActivityFeed extends Component{
     .catch(err => console.error)
   }
 
-  fetchPosts(){
+  fetchPosts = () => {
     const postURL = 'https://jsonplaceholder.typicode.com/posts'
     const request = new Request();
     request.get(postURL)
@@ -54,6 +58,9 @@ class ActivityFeed extends Component{
 
 
   render(){
+    if(!this.state.postData.length || !this.state.userData)
+    return <div className="lds-facebook">Loading...<div></div><div></div><div></div></div>;
+
     const selectedPost = this.state.postData.find(post => {
       return post.title === this.state.selectedPost;
     })

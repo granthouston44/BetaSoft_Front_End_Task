@@ -3,28 +3,22 @@ import Post from './Post'
 
 const FeedList = (props) => {
 
-if(!props.postData) return <div className="lds-facebook">Loading...<div></div><div></div><div></div></div>;
+if(!props.userData || !props.postData) return <div className="animation-bars">Loading...<div className="lds-facebook"><div></div><div></div><div></div></div></div>
 
-function handleClick(event){
-  console.log('handle click');
-    console.log(event.target);
-    props.onPostSelected(event.target.innerText);
+
+function userById(){
+return props.userData.find(user => user.id === props.postData[0].userId)
 }
+const user = userById()
 
-
-// function userById(){
-// let userObject = props.userData.find(user => user.id === props.postData.userId)
-// return userObject
-// }
-//
-// let user = userById()
 const postNodes = props.postData.map((post) => {
 
 
 return(
-  <ul key={post.id} onClick={handleClick.bind(this)}>
+  <ul key={post.id}>
     <hr/>
-    <Post postData={post} userData={props.userData.find(user => user.id === post.userId)} >{post.title}</Post>
+    <Post postData={post} userData={user} >{post.title}</Post>
+    <p></p>
   </ul>
 )
 })
@@ -35,6 +29,7 @@ return(
   return(
     <div>
       {postNodes}
+
     </div>
   )
 
