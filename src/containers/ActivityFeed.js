@@ -21,7 +21,7 @@ class ActivityFeed extends Component{
   }
 
 
-  componentWillMount(){
+  componentDidMount(){
     this.fetchPosts()
     this.fetchUsers()
 

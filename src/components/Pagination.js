@@ -9,7 +9,7 @@ for(let i = 1; i <= Math.ceil(props.totalPosts / props.postsPerPage); i++ ){
 }
 
 return(
-<nav>
+<nav className="pagination-container">
 <ul className="pagination">
 {pageNumbers.map((number) => {
   return(
