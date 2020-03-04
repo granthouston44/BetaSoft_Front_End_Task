@@ -56,6 +56,21 @@ color: black;
   background-image: linear-gradient(to left, rgb(3, 200, 197), rgba(21, 102, 209, 1))
 }
 
+.beta-banner{
+  color: white;
+  font-weight: bolder;
+  font-size: -webkit-xxx-large;
+
+}
+
+.blog-banner{
+  color: #ccd3d9;
+  font-weight: bolder;
+  font-style: italic;
+  letter-spacing: 5px;
+  font-size: -webkit-xxx-large;
+}
+
 
 .lds-facebook {
   display: inline-block;
@@ -92,4 +107,10 @@ color: black;
     top: 24px;
     height: 32px;
   }
+}
+
+.animation-bars{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

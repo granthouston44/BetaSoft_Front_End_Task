@@ -12,7 +12,7 @@ class ActivityFeed extends Component{
       selectedPost: "",
       commentData: [],
       currentPage: 1,
-      postsPerPage: 5
+      postsPerPage: 1
     }
     this.paginate = this.paginate.bind(this)
     this.handleSelectedPost = this.handleSelectedPost.bind(this)

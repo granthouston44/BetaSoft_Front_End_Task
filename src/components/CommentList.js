@@ -13,6 +13,8 @@ const CommentList = (props) => {
     return null
   }
 
+  if(!props.commentData) return <div className="animation-bars">Loading...<div className="lds-facebook"><div></div><div></div><div></div></div></div>
+
   return (
 
     <div className="comment-list">

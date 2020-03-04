@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className="banner">
-        <h1>BetaBlog!</h1>
+        <div className="beta-banner">Beta</div> <div className="blog-banner">Blog!</div>
       </div>
       <ActivityFeed />
     </div>
