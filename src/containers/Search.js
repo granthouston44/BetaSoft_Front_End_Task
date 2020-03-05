@@ -8,6 +8,7 @@ function handleChange(event){
 
 return(
   <div>
+  <p>Search posts by user:</p>
     <input type="text" defaultValue={'enter username'} onChange={handleChange}/>
   </div>
 )
