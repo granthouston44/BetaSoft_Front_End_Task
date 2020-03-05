@@ -29,24 +29,24 @@ Similarly, a request helper that can be used in future to build any other reques
 
 ## Known Issues
 
-The search filter doesn't quite work as expected. 
-It will not load results that don't match the filter, however the pagination doesn't work to show the filtered results on the current page. 
-
-If you search 'samantha' - then click on page 6 you will see the results.
-Evey other post will be in a permanent state of "loading"
+The search bar default value doesn't disappear when a user begins to type.
+There seems to be an issue that appears every now and then where the data isn't getting rendered fast enough causing the page to crash. It is rare and difficult to replicate, but something to be aware of in future refactoring/optimizations. 
 
 ## Future iterations
 
 CSS improvements - make the site more interesting and pleasing to the eye.
+Make the styling more consistent
 
-Filters - filter posts by user, filter by comment popularity etc
-Improve and complete filter by user function
+Filters - filter by comment popularity, radio button filters/sorts etc
+Improve search filter to have predictions
 
 Read up on react hooks and see if they can be of any use for the project 
 
 ## Refactoring
 
 I'd like to look into PropTypes to help improve readability and provide type safety.
+
+
 
 
 
