@@ -32,6 +32,8 @@ Similarly, a request helper that can be used in future to build any other reques
 The search bar default value doesn't disappear when a user begins to type.
 There seems to be an issue that appears every now and then where the data isn't getting rendered fast enough causing the page to crash. It is rare and difficult to replicate, but something to be aware of in future refactoring/optimizations. 
 
+Another issue is that whilst loading the data, the search bar disappears forcing a user to refresh
+
 ## Future iterations
 
 CSS improvements - make the site more interesting and pleasing to the eye.
