@@ -60,22 +60,38 @@ class ActivityFeed extends Component{
     return <div className="lds-facebook">Loading...<div></div><div></div><div></div></div>;
 
 
-    let filteredPosts = this.state.userData.filter(
+    let filteredUsers = this.state.userData.filter(
       (user) => {
         return user.username.toLowerCase().indexOf(
           this.state.search.toLowerCase()) !== -1
-
       }
     )
+
+    let filteredPosts = this.state.postData.filter(
+      (post) => {
+        if(filteredUsers.length > 1 ){
+          return post
+        }
+        if(filteredUsers.length === 1 && post.userId === filteredUsers[0].id){
+        return post
+      }
+    }
+    )
+
+
     const indexOfLastPost = this.state.currentPage * this.state.postsPerPage
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage
-    const currentPosts = this.state.postData.slice(indexOfFirstPost, indexOfLastPost)
+    const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost)
+
+    if(!filteredPosts.length || !filteredUsers)
+    return <div className="lds-facebook">Loading...<div></div><div></div><div></div></div>;
+
 
     return(
       <div>
-      <Search users={filteredPosts} handleUpdate={this.handleUpdateSearch}/>
-      <FeedList postData={currentPosts} userData={filteredPosts}/>
-      <Pagination paginate={this.paginate} postsPerPage={this.state.postsPerPage} totalPosts={this.state.postData.length} />
+      <Search users={filteredUsers} handleUpdate={this.handleUpdateSearch}/>
+      <FeedList postData={currentPosts} userData={filteredUsers}/>
+      <Pagination paginate={this.paginate} postsPerPage={this.state.postsPerPage} totalPosts={filteredPosts.length} />
       </div>
     )
   }

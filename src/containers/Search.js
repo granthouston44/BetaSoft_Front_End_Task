@@ -8,7 +8,7 @@ function handleChange(event){
 
 return(
   <div>
-    <input type="text" onChange={handleChange}/>
+    <input type="text" defaultValue={'enter username'} onChange={handleChange}/>
   </div>
 )
 
